@@ -1,23 +1,53 @@
+
 pipeline {
     agent any
 
     stages {
         stage('Git Checkout') {
             steps {
-                sh '''
-                    if [ -d .git ]; then
-                        echo "Repository already exists; skipping clone."
-                    else
-                        git clone --branch main  https://github.com/fahadf1899/CI_HTML_APP.git .
-                    fi
-                '''
+                checkout scm
+                sh 'ls -la'
+                sh 'ls -la CI'
             }
         }
 
         stage('Docker Image Build') {
             steps {
-                sh 'docker build -t my-image:latest .'
+                dir('CI') {
+                    sh 'docker build -t my-image:latest .'
+                }
             }
+        }
+
+        stage('Deploy Container') {
+            steps {
+                sh '''
+                    docker rm -f web-app || true
+                    docker run -d \
+                        --name web-app \
+                        --restart unless-stopped \
+                        -p 8081:80 \
+                        my-image:latest
+                '''
+            }
+        }
+
+        stage('Verify Deployment') {
+            steps {
+                sh '''
+                    sleep 3
+                    curl -f http://localhost:8081/
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'CI/CD pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed. Check Console Output.'
         }
     }
 }
