@@ -1,5 +1,363 @@
 <!DOCTYPE html>
-<html>
-  <head><title>My App</title></head>
-  <body><h1>Hello from Jenkins CI/CD!</h1></body>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shaik Faisal Fahad — DevOps Engineer</title>
+<meta name="description" content="Portfolio of Shaik Faisal Fahad, DevOps Engineer based in Hyderabad, India.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          base: '#0F1419',
+          panel: '#161D26',
+          panel2: '#1B2430',
+          line: '#2A333D',
+          ink: '#E8ECEF',
+          muted: '#8B98A5',
+          teal: '#5EEAD4',
+          amber: '#F0A868',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #0F1419; }
+  ::selection { background: #5EEAD4; color: #0F1419; }
+
+  .cursor::after {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 1.1em;
+    background: #5EEAD4;
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .cursor::after { animation: none; }
+  }
+
+  .layer-row:hover .layer-bar { border-color: #5EEAD4; }
+</style>
+</head>
+
+<body class="bg-base text-ink font-body antialiased">
+
+<!-- Nav -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-line bg-base/85 backdrop-blur">
+  <div class="max-w-5xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
+    <a href="#top" class="font-mono text-sm text-teal tracking-tight">SFF<span class="text-muted">@hyderabad</span></a>
+    <nav class="hidden sm:flex items-center gap-8 text-sm text-muted">
+      <a href="#stack" class="hover:text-ink transition-colors">Stack</a>
+      <a href="#about" class="hover:text-ink transition-colors">About</a>
+      <a href="#contact" class="hover:text-ink transition-colors">Contact</a>
+    </nav>
+    <button id="menuBtn" aria-label="Open menu" aria-expanded="false" class="sm:hidden text-ink">
+      <svg id="menuIconOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+      </svg>
+      <svg id="menuIconClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  <div id="mobileMenu" class="sm:hidden hidden border-t border-line bg-base">
+    <div class="px-6 py-4 flex flex-col gap-4 text-sm text-muted">
+      <a href="#stack" class="hover:text-ink transition-colors">Stack</a>
+      <a href="#about" class="hover:text-ink transition-colors">About</a>
+      <a href="#contact" class="hover:text-ink transition-colors">Contact</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="top" class="max-w-5xl mx-auto px-6 sm:px-8 pt-32 pb-20 sm:pt-40 sm:pb-28">
+  <div class="grid md:grid-cols-2 gap-12 items-start">
+    <div>
+      <p class="font-mono text-xs text-amber mb-4">~1 year in production infrastructure</p>
+      <h1 class="font-display font-700 text-4xl sm:text-5xl leading-[1.1] text-ink">
+        Shaik Faisal<br>Fahad
+      </h1>
+      <p class="mt-4 text-lg text-muted max-w-sm">
+        DevOps Engineer keeping deployments boring, pipelines predictable, and cloud infrastructure honest — based in Hyderabad, India.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="#stack" class="px-5 py-2.5 rounded bg-teal text-base font-medium text-sm hover:bg-teal/90 transition-colors">See the stack</a>
+        <a href="#contact" class="px-5 py-2.5 rounded border border-line text-ink text-sm hover:border-teal transition-colors">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="rounded-lg border border-line bg-panel overflow-hidden">
+      <div class="flex items-center gap-1.5 px-4 py-3 border-b border-line bg-panel2">
+        <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
+        <span class="ml-2 font-mono text-xs text-muted">deploy.sh — bash</span>
+      </div>
+      <div class="p-5 font-mono text-[13px] leading-relaxed h-56 overflow-hidden">
+        <pre id="terminal" class="whitespace-pre-wrap text-ink"></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stack -->
+<section id="stack" class="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-line reveal">
+  <div class="max-w-lg mb-14">
+    <h2 class="font-display font-600 text-2xl text-ink">The stack</h2>
+    <p class="mt-3 text-muted">Read bottom to top — same order it gets built in. Ansible runs the automation thread through every layer.</p>
+  </div>
+
+  <div class="relative">
+    <div class="hidden sm:block absolute -left-4 top-2 bottom-2 w-px bg-line"></div>
+    <div class="hidden sm:flex absolute -left-4 top-1/2 -translate-y-1/2 -translate-x-1/2 flex-col items-center">
+      <span class="font-mono text-[11px] text-amber bg-base px-1 -rotate-90 whitespace-nowrap">ansible · automation</span>
+    </div>
+
+    <div class="space-y-3">
+
+      <div class="layer-row">
+        <div class="layer-bar flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded border border-line bg-panel px-5 py-4 transition-colors">
+          <div>
+            <p class="text-ink font-medium">Identity &amp; access</p>
+            <p class="text-sm text-muted">Who can touch what, and why</p>
+          </div>
+          <p class="font-mono text-xs text-teal">IAM</p>
+        </div>
+      </div>
+
+      <div class="layer-row">
+        <div class="layer-bar flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded border border-line bg-panel px-5 py-4 transition-colors">
+          <div>
+            <p class="text-ink font-medium">Cloud infrastructure</p>
+            <p class="text-sm text-muted">Compute and storage on AWS</p>
+          </div>
+          <p class="font-mono text-xs text-teal">EC2 · S3</p>
+        </div>
+      </div>
+
+      <div class="layer-row">
+        <div class="layer-bar flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded border border-line bg-panel px-5 py-4 transition-colors">
+          <div>
+            <p class="text-ink font-medium">Orchestration</p>
+            <p class="text-sm text-muted">Scheduling and scaling workloads</p>
+          </div>
+          <p class="font-mono text-xs text-teal">Kubernetes</p>
+        </div>
+      </div>
+
+      <div class="layer-row">
+        <div class="layer-bar flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded border border-line bg-panel px-5 py-4 transition-colors">
+          <div>
+            <p class="text-ink font-medium">Containers</p>
+            <p class="text-sm text-muted">Packaging apps the same way, every time</p>
+          </div>
+          <p class="font-mono text-xs text-teal">Docker</p>
+        </div>
+      </div>
+
+      <div class="layer-row">
+        <div class="layer-bar flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded border border-line bg-panel px-5 py-4 transition-colors">
+          <div>
+            <p class="text-ink font-medium">Foundation</p>
+            <p class="text-sm text-muted">The OS and the scripts that hold it together</p>
+          </div>
+          <p class="font-mono text-xs text-teal">Linux · Python</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-line reveal">
+  <div class="grid md:grid-cols-[160px,1fr] gap-8">
+    <h2 class="font-display font-600 text-2xl text-ink">About</h2>
+    <div class="max-w-xl space-y-4 text-muted leading-relaxed">
+      <p>
+        I'm a DevOps engineer with close to a year of hands-on experience, currently working out of Hyderabad. My work sits at the join between infrastructure and automation — provisioning cloud resources on AWS, containerizing applications with Docker, and running them on Kubernetes.
+      </p>
+      <p>
+        Ansible is where the automation lives: configuration that stays consistent whether it's touching one server or fifty. On the access side, I work with IAM to keep permissions scoped to what's actually needed, and with S3 and EC2 as the everyday building blocks of the infrastructure I manage.
+      </p>
+      <p>
+        Early career, but the habits are already there: read the logs before you guess, automate the second time you do something by hand, and never deploy on a Friday without a rollback plan.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-line reveal">
+  <div class="grid md:grid-cols-[160px,1fr] gap-8">
+    <h2 class="font-display font-600 text-2xl text-ink">Contact</h2>
+    <div class="max-w-xl">
+      <p class="text-muted mb-8">Open to DevOps and cloud infrastructure roles. The fastest way to reach me is email.</p>
+
+      <div class="space-y-4">
+        <div class="flex items-center justify-between rounded border border-line bg-panel px-5 py-4">
+          <div>
+            <p class="text-xs text-muted font-mono">email</p>
+            <p id="emailText" class="text-ink">faisal.fahad@example.com</p>
+          </div>
+          <button id="copyBtn" class="text-xs font-mono text-teal border border-line rounded px-3 py-1.5 hover:border-teal transition-colors">copy</button>
+        </div>
+
+        <div class="rounded border border-line bg-panel px-5 py-4">
+          <p class="text-xs text-muted font-mono">location</p>
+          <p class="text-ink">Hyderabad, Telangana, India</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+          <a href="https://linkedin.com/in/your-profile" class="text-sm text-muted hover:text-teal transition-colors underline underline-offset-4">LinkedIn</a>
+          <a href="https://github.com/your-profile" class="text-sm text-muted hover:text-teal transition-colors underline underline-offset-4">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="max-w-5xl mx-auto px-6 sm:px-8 py-10 border-t border-line">
+  <p class="text-xs text-muted font-mono">Shaik Faisal Fahad — Hyderabad, India</p>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const iconOpen = document.getElementById('menuIconOpen');
+  const iconClose = document.getElementById('menuIconClose');
+
+  menuBtn.addEventListener('click', () => {
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    });
+  });
+
+  // Terminal typewriter
+  const lines = [
+    { text: '$ ansible-playbook site.yml --check', pause: 400 },
+    { text: 'PLAY [provision infra] ****************', pause: 200, dim: true },
+    { text: 'ok: [web-01] => configured', pause: 150, dim: true },
+    { text: '$ docker build -t api:latest .', pause: 400 },
+    { text: 'Successfully built api:latest', pause: 200, dim: true },
+    { text: '$ kubectl apply -f deployment.yaml', pause: 400 },
+    { text: 'deployment.apps/api configured', pause: 200, dim: true },
+    { text: '$ aws s3 ls s3://prod-artifacts/', pause: 400 },
+    { text: 'build-142.tar.gz  build-143.tar.gz', pause: 200, dim: true },
+    { text: '$ echo "status: healthy"', pause: 400 },
+    { text: 'status: healthy', pause: 800, dim: true, ok: true },
+  ];
+
+  const terminalEl = document.getElementById('terminal');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function renderStatic() {
+    terminalEl.innerHTML = lines.map(l =>
+      `<div class="${l.dim ? 'text-muted' : 'text-ink'} ${l.ok ? 'text-teal' : ''}">${l.text}</div>`
+    ).join('');
+  }
+
+  async function typeTerminal() {
+    if (reduceMotion) { renderStatic(); return; }
+    while (true) {
+      terminalEl.innerHTML = '';
+      for (const line of lines) {
+        const div = document.createElement('div');
+        div.className = (line.dim ? 'text-muted' : 'text-ink') + (line.ok ? ' text-teal' : '');
+        terminalEl.appendChild(div);
+
+        if (line.dim) {
+          div.textContent = line.text;
+        } else {
+          div.classList.add('cursor');
+          for (let i = 0; i < line.text.length; i++) {
+            div.textContent = line.text.slice(0, i + 1);
+            await sleep(18);
+          }
+          div.classList.remove('cursor');
+        }
+        await sleep(line.pause);
+
+        // trim scrollback so it doesn't overflow the panel
+        while (terminalEl.children.length > 9) {
+          terminalEl.removeChild(terminalEl.firstChild);
+        }
+      }
+      await sleep(1200);
+    }
+  }
+
+  function sleep(ms) { return new Promise(res => setTimeout(res, ms)); }
+  typeTerminal();
+
+  // Copy email
+  const copyBtn = document.getElementById('copyBtn');
+  const emailText = document.getElementById('emailText').textContent.trim();
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(emailText);
+      copyBtn.textContent = 'copied';
+      setTimeout(() => { copyBtn.textContent = 'copy'; }, 1500);
+    } catch (e) {
+      copyBtn.textContent = 'select & copy';
+      setTimeout(() => { copyBtn.textContent = 'copy'; }, 1500);
+    }
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
 </html>
